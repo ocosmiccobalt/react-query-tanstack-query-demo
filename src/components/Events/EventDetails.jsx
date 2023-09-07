@@ -22,7 +22,10 @@ export default function EventDetails() {
   } = useMutation({
     mutationFn: deleteEvent,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['events'] });
+      queryClient.invalidateQueries({
+        queryKey: ['events'],
+        refetchType: 'none'
+      });
       navigate('/events');
     }
   });
